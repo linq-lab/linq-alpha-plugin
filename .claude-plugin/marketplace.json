@@ -1,0 +1,14 @@
+{
+  "name": "linq-alpha",
+  "description": "LinqAlpha's plugin for Claude — connector plus guide-first research skills for financial data.",
+  "owner": {
+    "name": "LinqAlpha",
+    "email": "support@linqalpha.com"
+  },
+  "plugins": [
+    {
+      "name": "linq-alpha",
+      "source": "./plugins/linq-alpha"
+    }
+  ]
+}
