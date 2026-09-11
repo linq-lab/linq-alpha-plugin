@@ -1,8 +1,8 @@
 {
   "name": "linq-alpha",
   "displayName": "LinqAlpha",
-  "version": "0.2.0",
-  "description": "Connect Claude to LinqAlpha and provide capability-based selection, public tool discovery, and guide-first research guidance without bundling LinqAlpha's internal orchestration contract.",
+  "version": "0.3.0",
+  "description": "Connect Claude to LinqAlpha, guide capability-based provider selection, and load the live organization contract without bundling LinqAlpha's internal orchestration policy.",
   "author": {
     "name": "LinqAlpha",
     "email": "support@linqalpha.com"

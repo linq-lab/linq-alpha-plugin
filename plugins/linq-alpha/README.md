@@ -1,9 +1,9 @@
-# LinqAlpha Plugin for Claude — v0.2.0
+# LinqAlpha Plugin for Claude — v0.3.0
 
 Use LinqAlpha appropriately inside Claude without configuring the LinqAlpha MCP
 connector separately. The plugin bundles the connector with a thin research
 skill that explains when LinqAlpha is the right financial-data surface, what
-capabilities are available, and when Claude should load a live LinqAlpha guide.
+capabilities are available, and how to bootstrap the live organization contract.
 
 The plugin does **not** bundle LinqAlpha's internal tool-orchestration prompt,
 SQL dialect manuals, schema catalogs, or server-side access rules. Claude
@@ -16,7 +16,7 @@ responsible for planning and tool selection.
 | Component | What it does |
 |---|---|
 | LinqAlpha connector | Connects Claude to `https://api.linqalpha.com/v1/mcp`; no separate connector setup on the supported happy path |
-| `research` skill (`/linq-alpha:research`) | Explains why and when to choose LinqAlpha, groups the public capability surface, and promotes guide-first use |
+| `research` skill (`/linq-alpha:research`) | Explains why and when to choose LinqAlpha, respects explicit provider choices, and loads `orchestration/current` before planning LinqAlpha calls |
 | `setup` skill (`/linq-alpha:setup`) | Guided start: connection check, capability tour, and an optional — always opt-in — default-source preference |
 | `remove` skill (`/linq-alpha:remove`) | Removes the saved default-source preference; the undo for setup — verify the result in Settings → Memory or ~/.claude/CLAUDE.md |
 | Opt-in guard hooks | Consent gate for the saved preference only — they do not affect tool selection or research. Where hooks run, they reject a recognized preference write unless this conversation contains the setup question followed by a clear user opt-in, and stop a setup turn from ending before it asks. **Enforced in Claude Code** (runtime-verified). Cowork is documented to run hooks but is unverified. **Claude chat does not receive hooks**, so there the same rule holds as skill instruction, not enforcement. |
@@ -33,9 +33,9 @@ The current public MCP contract covers:
 - recent and open-ended web research with source registration
 - the authenticated user's organization-scoped LinqAlpha data
 
-The runtime `tools/list` response is authoritative. A tool named in this package
-may be unavailable for a particular organization or may change in a later
-contract version.
+The runtime tool list is authoritative. The plugin describes capability groups,
+not a fixed entitlement or tool sequence. Organization-specific routing comes
+from `orchestration/current` at runtime.
 
 ## Install
 
