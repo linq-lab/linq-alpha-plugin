@@ -134,7 +134,9 @@ def main() -> None:
     try:
         event = json.load(sys.stdin)
     except (json.JSONDecodeError, OSError):
-        emit_deny("linq-alpha opt-in guard: malformed hook input; preference write blocked.")
+        # The hook runs on every Edit, Write, MultiEdit and Bash call. Unparsable
+        # input tells us nothing about a preference write, so allow and let the
+        # unrelated call through.
         return
     tool_name = str(event.get("tool_name", ""))
     tool_input = event.get("tool_input")

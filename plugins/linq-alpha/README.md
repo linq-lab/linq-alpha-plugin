@@ -96,3 +96,5 @@ behavior, and organization-admin restrictions must be verified for the target
 Claude surface and build.
 
 Questions or issues: support@linqalpha.com
+
+Privacy policy: https://www.linqalpha.com/privacy-policy

@@ -73,6 +73,8 @@ def main() -> None:
         event = json.load(sys.stdin)
     except (json.JSONDecodeError, OSError):
         return
+    if event.get("stop_hook_active"):
+        return
     user_message = latest_user_message(str(event.get("transcript_path", "")))
     if not SETUP_RE.search(user_message):
         return

@@ -55,3 +55,5 @@ against the copy you have installed. Press **Update** on the marketplace, or run
 Published from LinqAlpha's internal repository on every merge to `main`. Pull
 requests are not accepted here — the commits in this repository are generated.
 Send issues and questions to support@linqalpha.com.
+
+Privacy policy: https://www.linqalpha.com/privacy-policy
