@@ -18,8 +18,7 @@ responsible for planning and tool selection.
 | LinqAlpha connector | Connects Claude to `https://api.linqalpha.com/v1/mcp`; no separate connector setup on the supported happy path |
 | `research` skill (`/linq-alpha:research`) | Explains why and when to choose LinqAlpha, respects explicit provider choices, and loads `orchestration/current` before planning LinqAlpha calls |
 | `setup` skill (`/linq-alpha:setup`) | Guided start: connection check, capability tour, and an optional — always opt-in — default-source preference |
-| `remove` skill (`/linq-alpha:remove`) | Removes the saved default-source preference; the undo for setup — verify the result in Settings → Memory or ~/.claude/CLAUDE.md |
-| Opt-in guard hooks | Consent gate for the saved preference only — they do not affect tool selection or research. Where hooks run, they reject a recognized preference write unless this conversation contains the setup question followed by a clear user opt-in, and stop a setup turn from ending before it asks. **Enforced in Claude Code** (runtime-verified). Cowork is documented to run hooks but is unverified. **Claude chat does not receive hooks**, so there the same rule holds as skill instruction, not enforcement. |
+| `remove` skill (`/linq-alpha:remove`) | Removes the saved default-source preference; the undo for setup — verify the result in Settings → Memory |
 
 ## Capability surface
 
@@ -75,15 +74,10 @@ Then, on any surface:
 2. If permitted by your organization's policy and after reviewing the LinqAlpha
    connector's tools, open its settings and set tool permissions to **Always
    allow**, so research workflows run without a per-call approval prompt.
-3. Run `/linq-alpha:setup` once on the surface where you want the preference.
-   Claude chat stores it in Claude Memory when that feature is available;
-   Claude Code stores it in `~/.claude/CLAUDE.md`. These stores do not
-   automatically synchronize with each other. The guided flow is available
-   in chat, Cowork, and Code. Setup saves the preference only with your
-   explicit consent. In Claude Code that rule is enforced by guard hooks; in
-   chat, which does not receive hooks, it is carried by the skill's own
-   instructions. `/linq-alpha:remove` (or simply asking to forget it) removes
-   it from the current surface.
+3. Run `/linq-alpha:setup` once. It saves the preference in your own Claude
+   memory, and only with your explicit consent. The guided flow is available
+   in chat, Cowork and Code. `/linq-alpha:remove` (or simply asking to forget
+   it) removes it.
 
 Try:
 

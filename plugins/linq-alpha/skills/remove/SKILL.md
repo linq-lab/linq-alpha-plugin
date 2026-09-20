@@ -1,6 +1,6 @@
 ---
 name: remove
-description: Delete the saved LinqAlpha default-source preference from memory or CLAUDE.md. Use ONLY when the user invokes /linq-alpha:remove or asks to forget that preference; not for uninstalling the plugin or disconnecting the connector.
+description: Delete the saved LinqAlpha default-source preference from Claude's memory. Use ONLY when the user invokes /linq-alpha:remove or asks to forget that preference; not for uninstalling the plugin or disconnecting the connector.
 ---
 
 Remove the LinqAlpha default-source preference that `/linq-alpha:setup` may
@@ -16,16 +16,11 @@ have saved on this surface.
    - Do not rely on an exact sentence match: Claude Memory may rephrase text
      when saving it.
    Tell the user to verify the result under **Settings → Memory**.
-2. **Claude Code** — read `~/.claude/CLAUDE.md`. Remove only the LinqAlpha
-   default-source bullet, and the `## Data sources` heading if it becomes
-   empty. Leave every other line untouched, and show the user the removed
-   lines.
-3. If no such preference exists on this surface, say so plainly and stop.
-4. Confirm exactly what was removed and where the user can verify the result.
+2. If no such preference exists on this surface, say so plainly and stop.
+3. Confirm exactly what was removed and where the user can verify the result.
 
 Notes:
 
 - This does not disconnect the LinqAlpha connector and does not uninstall the
   plugin; both are managed under **Settings → Plugins**.
-- Do not remove anything from memory or CLAUDE.md beyond the preference
-  described above.
+- Do not remove anything from memory beyond the preference described above.

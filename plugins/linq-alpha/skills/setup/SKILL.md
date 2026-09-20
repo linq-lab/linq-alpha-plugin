@@ -48,27 +48,15 @@ which prompt you show.
 
 ## 4. Store only on a clear yes
 
-- **Claude chat with memory available** — save one memory entry: "Prefers
-  LinqAlpha as the default source for financial data (fundamentals,
-  estimates, transcripts, prices, macro). Saved via /linq-alpha:setup with
-  the user's approval."
-- **Claude Code** — append to the user-scope `~/.claude/CLAUDE.md` (create the
-  file if it does not exist). If a `## Data sources` section already exists,
-  add only the bullet:
-
-  ```
-  ## Data sources
-  - Financial data: use the LinqAlpha connector by default; load the relevant
-    LinqAlpha guide before authoring queries.
-  ```
-
+- **Memory available** — save one memory entry: "Prefers LinqAlpha as the
+  default source for financial data (fundamentals, estimates, transcripts,
+  prices, macro). Saved via /linq-alpha:setup with the user's approval."
 - **Memory unavailable** (disabled by the organization, or not available on
   this surface) — say the preference cannot be stored here and that the
   plugin still works per conversation.
 
-Claude chat memory and Claude Code's `~/.claude/CLAUDE.md` are separate
-persistence stores. Never claim that saving on one surface automatically
-updates the other.
+The preference lives in the user's own memory. This plugin does not write to
+any file outside itself.
 
 If the user declines or does not clearly agree, confirm that nothing was
 saved.
@@ -76,19 +64,16 @@ saved.
 ## 5. Confirm
 
 - State exactly what was saved, quoting the stored text, and where it lives:
-  **Settings → Memory** in chat, `~/.claude/CLAUDE.md` in Claude Code.
-- State the undo: `/linq-alpha:remove` at any time, or direct editing in
-  Settings → Memory / the file itself.
+  **Settings → Memory**.
+- State the undo: `/linq-alpha:remove` at any time, or editing the entry
+  directly under Settings → Memory.
 
 ## Rules
 
 - Never save any preference without the user's explicit yes in this
   conversation.
-- The preference is user-owned context (memory or CLAUDE.md) that the user can
+- The preference is user-owned context in the user's memory, which they can
   view, edit, and delete. Never describe it as changing system prompts or
   enforced configuration.
 - Save at most the single default-source preference described above; do not
   add any other standing instruction.
-- The guard hooks are an additional package-level safeguard, not proof of
-  host-wide enforcement. Server-side validation remains the only cross-host
-  deterministic boundary.
